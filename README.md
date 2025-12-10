@@ -1,64 +1,125 @@
-# 🏨 Atlas - Réservation d'Hôtels au Maroc# 🏨 RéserveMaroc - Application de Réservation d'Hôtels## Atlas — the “mind-blowing” hotel stack
+# 🏨 Atlas - Réservation d'Hôtels# 🏨 Atlas - Réservation d'Hôtels au Maroc# 🏨 RéserveMaroc - Application de Réservation d'Hôtels## Atlas — the “mind-blowing” hotel stack
 
 
+
+**Projet d'examen EMSI**  
+
+**Auteur :** Oussama SAJJI
 
 Une application web de réservation d'hôtels construite avec Next.js.
 
+---
 
+
+
+## 🚀 Lancer le projet
 
 ---> Application de réservation d'hôtels au Maroc développée avec Next.js 15Atlas is a demo-grade hotel booking system that pairs modern UX patterns (Server Actions, streaming, optimistic UI) with enterprise data guarantees (PostgreSQL exclusion constraints powered by Prisma + Neon). Use it to show evaluators a cohesive product rather than a form that saves data.
 
+```bash
 
+# 1. Installer les dépendances
+
+npm install
 
 ## 📁 Structure du Projet (6 fichiers principaux)
 
+# 2. Configurer Clerk (authentification)
+
+#    Créer un fichier .env.local avec :
+
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
+
+CLERK_SECRET_KEY=sk_test_...```## 📋 Description### Architecture snapshot
 
 
-```## 📋 Description### Architecture snapshot
+
+# 3. Lancersrc/
+
+npm run dev
+
+```├── composants.jsx       ← 🎨 Tous les composants UI (boutons, cartes, calendrier...)
+
+
+
+Ouvrir [http://localhost:3000](http://localhost:3000)├── lib/
+
+
+
+---│   └── donnees.js       ← 📦 Données des hôtels + fonctions utilitairesRéserveMaroc est une application web moderne permettant de rechercher et réserver des hôtels dans les principales villes touristiques du Maroc. L'application propose une interface entièrement en français avec des prix en Dirhams Marocains (MAD).- **Next.js 15 App Router + Server Actions** keep business logic on the server while streaming marketing + search pages with Suspense and skeletons.
+
+
+
+## 📁 Structure└── app/
+
+
+
+```    ├── globals.css      ← 🎨 Styles CSS globaux- **Prisma + Neon Postgres** enforce availability at the database level. A GiST exclusion constraint eliminates double-bookings under heavy concurrency.
 
 src/
 
-├── composants.jsx       ← 🎨 Tous les composants UI (boutons, cartes, calendrier...)
+├── composants.jsx        ← Composants UI (Button, Card, Calendar...)    ├── layout.jsx       ← 🏠 Mise en page (en-tête, pied de page)
 
-├── lib/
+├── lib/donnees.js        ← Données des hôtels + utilitaires
 
-│   └── donnees.js       ← 📦 Données des hôtels + fonctions utilitairesRéserveMaroc est une application web moderne permettant de rechercher et réserver des hôtels dans les principales villes touristiques du Maroc. L'application propose une interface entièrement en français avec des prix en Dirhams Marocains (MAD).- **Next.js 15 App Router + Server Actions** keep business logic on the server while streaming marketing + search pages with Suspense and skeletons.
+└── app/    ├── page.jsx         ← 🏠 Page d'accueil## ✨ Fonctionnalités- **Clerk** handles authentication and session management.
 
-└── app/
+    ├── layout.jsx        ← Mise en page globale
 
-    ├── globals.css      ← 🎨 Styles CSS globaux- **Prisma + Neon Postgres** enforce availability at the database level. A GiST exclusion constraint eliminates double-bookings under heavy concurrency.
+    ├── page.jsx          ← Page d'accueil    ├── recherche/
 
-    ├── layout.jsx       ← 🏠 Mise en page (en-tête, pied de page)
+    ├── recherche/        ← Recherche d'hôtels
 
-    ├── page.jsx         ← 🏠 Page d'accueil## ✨ Fonctionnalités- **Clerk** handles authentication and session management.
+    └── reservations/     ← Mes réservations    │   ├── page.jsx     ← 🔍 Page de recherche d'hôtels- **Nuqs** keeps filters in the URL so search results are shareable.
 
-    ├── recherche/
-
-    │   ├── page.jsx     ← 🔍 Page de recherche d'hôtels- **Nuqs** keeps filters in the URL so search results are shareable.
+```
 
     │   └── actions.js   ← ⚡ Actions serveur (réservations)
 
+---
+
     └── reservations/- 🔍 **Recherche d'hôtels** - Filtrage par ville, dates et nombre de voyageurs- **Tailwind + shadcn/ui** provide an Airbnb-grade interface with accessible primitives.
+
+## 🛠️ Technologies
 
         └── page.jsx     ← 📋 Page "Mes réservations"
 
-```- 🏨 **5 hôtels** - Marrakech, Casablanca, Fès, Chefchaouen, Essaouira- **React Map GL** streams map pins in parallel with the hotel list.
+- **Next.js 16** - Framework React
+
+- **Tailwind CSS** - Styles```- 🏨 **5 hôtels** - Marrakech, Casablanca, Fès, Chefchaouen, Essaouira- **React Map GL** streams map pins in parallel with the hotel list.
+
+- **Clerk** - Authentification
+
+- **react-day-picker** - Calendrier
 
 
 
----- 🛏️ **3 types de chambres** - Standard, Supérieure, Suite (prix dynamiques)
+------- 🛏️ **3 types de chambres** - Standard, Supérieure, Suite (prix dynamiques)
 
 
 
-## 🚀 Installation Pas à Pas- 📅 **Calendrier français** - Sélection de dates avec react-day-picker### Setup
+## 📝 Commandes
 
 
 
-### Étape 1 : Cloner le projet- 💰 **Prix en MAD** - Dirhams Marocains (450 - 3200 MAD/nuit)
+| Commande | Description |## 🚀 Installation Pas à Pas- 📅 **Calendrier français** - Sélection de dates avec react-day-picker### Setup
+
+|----------|-------------|
+
+| `npm run dev` | Mode développement |
+
+| `npm run build` | Build production |
+
+| `npm start` | Lancer en production |### Étape 1 : Cloner le projet- 💰 **Prix en MAD** - Dirhams Marocains (450 - 3200 MAD/nuit)
 
 
 
-```bash- 🔐 **Authentification** - Connexion via Clerk1. **Install dependencies**
+---
+
+
+
+**EMSI 2024-2025**```bash- 🔐 **Authentification** - Connexion via Clerk1. **Install dependencies**
+
 
 git clone https://github.com/bentalba/hotel-booking.git
 
