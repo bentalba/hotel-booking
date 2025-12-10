@@ -6,7 +6,21 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { currentUserId, getViewerProfile } from "@/lib/auth";
 import { db } from "@/lib/db";
 
-type BookingWithRoom = Awaited<ReturnType<typeof db.booking.findMany>>[number];
+async function getBookings(userId: string) {
+  return db.booking.findMany({
+    where: { userId },
+    include: {
+      room: {
+        include: {
+          hotel: true,
+        },
+      },
+    },
+    orderBy: { startDate: "asc" },
+  });
+}
+
+type BookingWithRoom = Awaited<ReturnType<typeof getBookings>>[number];
 
 export const metadata: Metadata = {
   title: "My bookings | Atlas",
@@ -27,17 +41,7 @@ export default async function MyBookingsPage() {
     );
   }
 
-  const bookings = await db.booking.findMany({
-    where: { userId },
-    include: {
-      room: {
-        include: {
-          hotel: true,
-        },
-      },
-    },
-    orderBy: { startDate: "asc" },
-  });
+  const bookings = await getBookings(userId);
 
   if (!bookings.length) {
     return (
@@ -54,7 +58,7 @@ export default async function MyBookingsPage() {
 
   return (
     <div className="space-y-6">
-  {bookings.map((booking: BookingWithRoom) => {
+      {bookings.map((booking: BookingWithRoom) => {
         const isPast = booking.endDate < new Date();
         const status = isPast ? "Completed" : "Confirmed";
         return (
