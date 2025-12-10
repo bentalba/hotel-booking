@@ -1,191 +1,379 @@
-# 🏨 RéserveMaroc - Application de Réservation d'Hôtels## Atlas — the “mind-blowing” hotel stack
+# 🏨 Atlas - Réservation d'Hôtels au Maroc# 🏨 RéserveMaroc - Application de Réservation d'Hôtels## Atlas — the “mind-blowing” hotel stack
 
 
 
-> Application de réservation d'hôtels au Maroc développée avec Next.js 15Atlas is a demo-grade hotel booking system that pairs modern UX patterns (Server Actions, streaming, optimistic UI) with enterprise data guarantees (PostgreSQL exclusion constraints powered by Prisma + Neon). Use it to show evaluators a cohesive product rather than a form that saves data.
+Une application web de réservation d'hôtels construite avec Next.js.
 
 
 
-## 📋 Description### Architecture snapshot
+---> Application de réservation d'hôtels au Maroc développée avec Next.js 15Atlas is a demo-grade hotel booking system that pairs modern UX patterns (Server Actions, streaming, optimistic UI) with enterprise data guarantees (PostgreSQL exclusion constraints powered by Prisma + Neon). Use it to show evaluators a cohesive product rather than a form that saves data.
 
 
 
-RéserveMaroc est une application web moderne permettant de rechercher et réserver des hôtels dans les principales villes touristiques du Maroc. L'application propose une interface entièrement en français avec des prix en Dirhams Marocains (MAD).- **Next.js 15 App Router + Server Actions** keep business logic on the server while streaming marketing + search pages with Suspense and skeletons.
-
-- **Prisma + Neon Postgres** enforce availability at the database level. A GiST exclusion constraint eliminates double-bookings under heavy concurrency.
-
-## ✨ Fonctionnalités- **Clerk** handles authentication and session management.
-
-- **Nuqs** keeps filters in the URL so search results are shareable.
-
-- 🔍 **Recherche d'hôtels** - Filtrage par ville, dates et nombre de voyageurs- **Tailwind + shadcn/ui** provide an Airbnb-grade interface with accessible primitives.
-
-- 🏨 **5 hôtels** - Marrakech, Casablanca, Fès, Chefchaouen, Essaouira- **React Map GL** streams map pins in parallel with the hotel list.
-
-- 🛏️ **3 types de chambres** - Standard, Supérieure, Suite (prix dynamiques)
-
-- 📅 **Calendrier français** - Sélection de dates avec react-day-picker### Setup
-
-- 💰 **Prix en MAD** - Dirhams Marocains (450 - 3200 MAD/nuit)
-
-- 🔐 **Authentification** - Connexion via Clerk1. **Install dependencies**
-
-- 📱 **Responsive** - Design adaptatif mobile/desktop
-
-- 🎨 **Animations** - Effets de survol et transitions fluides	```bash
-
-	npm install
-
-## 🛠️ Technologies	```
+## 📁 Structure du Projet (6 fichiers principaux)
 
 
 
-| Technologie | Version | Usage |2. **Create your `.env`** (copy from `.env.example`). You’ll need:
-
-|-------------|---------|-------|
-
-| Next.js | 15 | Framework React |	- `DATABASE_URL` from Neon (or any Postgres instance)
-
-| React | 19 | Interface utilisateur |	- Clerk keys (`NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`, `CLERK_SECRET_KEY`)
-
-| Tailwind CSS | 4 | Styles |	- `NEXT_PUBLIC_MAPBOX_TOKEN`
-
-| Clerk | 6 | Authentification |
-
-| nuqs | 2 | État URL |3. **Database bootstrap**
-
-| date-fns | 4 | Manipulation dates |
-
-| react-day-picker | 9 | Calendrier |	```bash
-
-	npx prisma generate
-
-## 📁 Structure du Projet	npm run db:migrate
-
-	npm run db:seed
-
-```	```
+```## 📋 Description### Architecture snapshot
 
 src/
 
+├── composants.jsx       ← 🎨 Tous les composants UI (boutons, cartes, calendrier...)
+
+├── lib/
+
+│   └── donnees.js       ← 📦 Données des hôtels + fonctions utilitairesRéserveMaroc est une application web moderne permettant de rechercher et réserver des hôtels dans les principales villes touristiques du Maroc. L'application propose une interface entièrement en français avec des prix en Dirhams Marocains (MAD).- **Next.js 15 App Router + Server Actions** keep business logic on the server while streaming marketing + search pages with Suspense and skeletons.
+
+└── app/
+
+    ├── globals.css      ← 🎨 Styles CSS globaux- **Prisma + Neon Postgres** enforce availability at the database level. A GiST exclusion constraint eliminates double-bookings under heavy concurrency.
+
+    ├── layout.jsx       ← 🏠 Mise en page (en-tête, pied de page)
+
+    ├── page.jsx         ← 🏠 Page d'accueil## ✨ Fonctionnalités- **Clerk** handles authentication and session management.
+
+    ├── recherche/
+
+    │   ├── page.jsx     ← 🔍 Page de recherche d'hôtels- **Nuqs** keeps filters in the URL so search results are shareable.
+
+    │   └── actions.js   ← ⚡ Actions serveur (réservations)
+
+    └── reservations/- 🔍 **Recherche d'hôtels** - Filtrage par ville, dates et nombre de voyageurs- **Tailwind + shadcn/ui** provide an Airbnb-grade interface with accessible primitives.
+
+        └── page.jsx     ← 📋 Page "Mes réservations"
+
+```- 🏨 **5 hôtels** - Marrakech, Casablanca, Fès, Chefchaouen, Essaouira- **React Map GL** streams map pins in parallel with the hotel list.
+
+
+
+---- 🛏️ **3 types de chambres** - Standard, Supérieure, Suite (prix dynamiques)
+
+
+
+## 🚀 Installation Pas à Pas- 📅 **Calendrier français** - Sélection de dates avec react-day-picker### Setup
+
+
+
+### Étape 1 : Cloner le projet- 💰 **Prix en MAD** - Dirhams Marocains (450 - 3200 MAD/nuit)
+
+
+
+```bash- 🔐 **Authentification** - Connexion via Clerk1. **Install dependencies**
+
+git clone https://github.com/bentalba/hotel-booking.git
+
+cd hotel-booking- 📱 **Responsive** - Design adaptatif mobile/desktop
+
+```
+
+- 🎨 **Animations** - Effets de survol et transitions fluides	```bash
+
+### Étape 2 : Installer les dépendances
+
+	npm install
+
+```bash
+
+npm install## 🛠️ Technologies	```
+
+```
+
+
+
+### Étape 3 : Configurer l'authentification Clerk
+
+| Technologie | Version | Usage |2. **Create your `.env`** (copy from `.env.example`). You’ll need:
+
+1. Créez un compte sur [clerk.com](https://clerk.com)
+
+2. Créez une nouvelle application|-------------|---------|-------|
+
+3. Copiez vos clés API
+
+4. Créez un fichier `.env.local` à la racine :| Next.js | 15 | Framework React |	- `DATABASE_URL` from Neon (or any Postgres instance)
+
+
+
+```bash| React | 19 | Interface utilisateur |	- Clerk keys (`NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`, `CLERK_SECRET_KEY`)
+
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_votre_cle_ici
+
+CLERK_SECRET_KEY=sk_test_votre_cle_secrete_ici| Tailwind CSS | 4 | Styles |	- `NEXT_PUBLIC_MAPBOX_TOKEN`
+
+```
+
+| Clerk | 6 | Authentification |
+
+### Étape 4 : Lancer l'application
+
+| nuqs | 2 | État URL |3. **Database bootstrap**
+
+```bash
+
+npm run dev| date-fns | 4 | Manipulation dates |
+
+```
+
+| react-day-picker | 9 | Calendrier |	```bash
+
+### Étape 5 : Ouvrir dans le navigateur
+
+	npx prisma generate
+
+Allez sur [http://localhost:3000](http://localhost:3000) 🎉
+
+## 📁 Structure du Projet	npm run db:migrate
+
+---
+
+	npm run db:seed
+
+## 📖 Explication des Fichiers
+
+```	```
+
+### `src/composants.jsx` - Les Composants UI
+
+src/
+
+Ce fichier contient **tous** les composants d'interface :
+
 ├── app/	> After running migrations, execute the GiST constraint manually to guarantee overlap protection:
 
-│   ├── layout.jsx      # Layout principal avec header	>
+| Composant | Description |
 
-│   ├── page.jsx        # Page d'accueil	> ```sql
+|-----------|-------------|│   ├── layout.jsx      # Layout principal avec header	>
 
-│   ├── actions.js      # Server actions (réservation)	> ALTER TABLE "Booking"
+| `Button` | Bouton avec différents styles (default, outline, ghost) |
 
-│   ├── globals.css     # Styles Tailwind	> ADD CONSTRAINT no_overlap
+| `Input` | Champ de saisie texte/nombre |│   ├── page.jsx        # Page d'accueil	> ```sql
 
-│   ├── search/	> EXCLUDE USING GIST (
+| `Label` | Étiquette pour les formulaires |
 
-│   │   └── page.jsx    # Page de recherche	>   "roomId" WITH =,
+| `Card` | Carte avec bordure et ombre |│   ├── actions.js      # Server actions (réservation)	> ALTER TABLE "Booking"
 
-│   └── my-bookings/	>   tsrange("startDate", "endDate") WITH &&
+| `Badge` | Petit label coloré (ex: "Populaire") |
 
-│       └── page.jsx    # Mes réservations	> );
+| `Select` | Menu déroulant |│   ├── globals.css     # Styles Tailwind	> ADD CONSTRAINT no_overlap
 
-├── components/	> ```
+| `Calendar` | Calendrier interactif |
 
-│   └── ui.jsx          # Tous les composants UI
+| `DateRangePicker` | Sélecteur de plage de dates |│   ├── search/	> EXCLUDE USING GIST (
 
-└── lib/4. **Run the app**
+| `Skeleton` | Effet de chargement |
+
+| `ToastProvider` | Système de notifications |│   │   └── page.jsx    # Page de recherche	>   "roomId" WITH =,
+
+
+
+### `src/lib/donnees.js` - Les Données│   └── my-bookings/	>   tsrange("startDate", "endDate") WITH &&
+
+
+
+Ce fichier contient :│       └── page.jsx    # Mes réservations	> );
+
+
+
+- **`HOTELS`** : Liste des 5 hôtels avec leurs chambres et prix├── components/	> ```
+
+- **`DESTINATIONS`** : Villes populaires (Marrakech, Casablanca, etc.)
+
+- **`FEATURES`** : Caractéristiques de l'app pour la page d'accueil│   └── ui.jsx          # Tous les composants UI
+
+- **`searchHotels(ville)`** : Fonction pour rechercher des hôtels
+
+- **`formatMAD(montant)`** : Formate les prix en Dirhams marocains└── lib/4. **Run the app**
+
+- **`getMockBookings()`** : Génère des réservations de démonstration
 
     └── index.js        # Données et utilitaires
 
+### `src/app/layout.jsx` - La Mise en Page
+
 ```	```bash
 
-	npm run dev
+Le layout contient :
 
-## 🚀 Installation	```
+- L'en-tête avec le logo "Atlas" et la navigation	npm run dev
+
+- Les boutons de connexion/inscription (Clerk)
+
+- Le pied de page## 🚀 Installation	```
+
+- Le provider pour les notifications (Toast)
 
 
+
+### `src/app/page.jsx` - Page d'Accueil
 
 ### Prérequis	Visit `http://localhost:3000` for the marketing page, `/search` for the booking flow, and `/my-bookings` for the Clerk-protected dashboard.
 
-- Node.js 18+
+Sections de la page :
 
-- npm ou yarn5. **Tests & linting**
+1. **Hero** : Grand bandeau vert avec titre et boutons- Node.js 18+
+
+2. **Destinations** : Grille de 4 villes populaires
+
+3. **Caractéristiques** : 3 cartes "Pourquoi Atlas ?"- npm ou yarn5. **Tests & linting**
+
+4. **Appel à l'action** : Bandeau noir en bas
 
 
+
+### `src/app/recherche/page.jsx` - Page Recherche
 
 ### Étapes	```bash
 
-	npm run lint
+Composants :
 
-```bash	npm run test
+- **Filtres** : Destination, dates, voyageurs, budget	npm run lint
 
-# 1. Cloner le projet	```
+- **CarteHotel** : Affiche un hôtel avec sélection de chambre
 
-git clone <url-du-repo>
-
-cd oussama### Demo talking points
+- **ListeResultats** : Grille de tous les hôtels filtrés```bash	npm run test
 
 
+
+### `src/app/reservations/page.jsx` - Mes Réservations# 1. Cloner le projet	```
+
+
+
+Affiche la liste des réservations avec :git clone <url-du-repo>
+
+- Photo de l'hôtel
+
+- Dates d'arrivée/départcd oussama### Demo talking points
+
+- Type de chambre
+
+- Prix total
+
+- Statut (Confirmée, Terminée, etc.)
 
 # 2. Installer les dépendances- *Architecture*: “App Router + Server Components trimmed the client bundle by ~40%, so it feels instant on budget Android devices.”
 
+---
+
 npm install- *Data integrity*: “Postgres GiST exclusion constraints make double-bookings mathematically impossible.”
+
+## 💰 Les Prix (en Dirhams Marocains)
 
 - *UX*: “Optimistic UI + skeleton streaming keep the perceived response time sub-second, even while hitting Neon.”
 
-# 3. Configurer l'environnement
+| Hôtel | Ville | Standard | Double | Suite |
 
-# Créer un fichier .env.local avec vos clés Clerk### Deployment
+|-------|-------|----------|--------|-------|# 3. Configurer l'environnement
 
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
+| The Grand Atlas | Casablanca | 850 MAD | 1 200 MAD | 2 500 MAD |
+
+| Riad Moonlight | Marrakech | 650 MAD | 950 MAD | 1 800 MAD |# Créer un fichier .env.local avec vos clés Clerk### Deployment
+
+| Azure Bay Resort | Tanger | 720 MAD | 1 100 MAD | 3 200 MAD |
+
+| Desert Oasis Lodge | Merzouga | 580 MAD | 900 MAD | 2 200 MAD |NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
+
+| Mountain Retreat | Chefchaouen | 450 MAD | 680 MAD | 1 200 MAD |
 
 CLERK_SECRET_KEY=sk_test_...Deploy straight to [Vercel](https://vercel.com/) with the same env vars. Enable the Edge runtime for the marketing route if you want even faster TTFB; the booking action should stay on the default Node runtime to talk to Prisma.
 
+---
 
-# 4. Lancer le serveur de développement
+
+
+## 🛠️ Technologies Utilisées# 4. Lancer le serveur de développement
+
 npm run dev
-```
 
-## 💻 Commandes
+| Technologie | Rôle |```
 
-| Commande | Description |
-|----------|-------------|
-| `npm run dev` | Serveur de développement (port 3000) |
-| `npm run build` | Build de production |
+|-------------|------|
+
+| **Next.js 16** | Framework React avec App Router |## 💻 Commandes
+
+| **Tailwind CSS** | Styles et design |
+
+| **Clerk** | Authentification (connexion, inscription) || Commande | Description |
+
+| **react-day-picker** | Calendrier et sélection de dates ||----------|-------------|
+
+| **date-fns** | Manipulation des dates || `npm run dev` | Serveur de développement (port 3000) |
+
+| **Radix UI** | Composants accessibles (Popover, Slot) || `npm run build` | Build de production |
+
 | `npm run start` | Serveur de production |
-| `npm run lint` | Vérification ESLint |
 
-## 📖 Guide d'Utilisation
+---| `npm run lint` | Vérification ESLint |
 
-### Page d'Accueil (`/`)
-- Hero avec bouton de recherche
-- Destinations populaires (Marrakech, Fès, Essaouira)
+
+
+## 📝 Commandes Utiles## 📖 Guide d'Utilisation
+
+
+
+```bash### Page d'Accueil (`/`)
+
+# Lancer en développement- Hero avec bouton de recherche
+
+npm run dev- Destinations populaires (Marrakech, Fès, Essaouira)
+
 - Fonctionnalités de l'application
 
-### Page de Recherche (`/search`)
+# Construire pour la production
+
+npm run build### Page de Recherche (`/search`)
+
 - Filtres : ville, dates, nombre de voyageurs
-- Cartes d'hôtels avec images et notes
-- Sélecteur de type de chambre (prix dynamique)
+
+# Lancer la version de production- Cartes d'hôtels avec images et notes
+
+npm start- Sélecteur de type de chambre (prix dynamique)
+
 - Bouton de réservation
 
-### Mes Réservations (`/my-bookings`)
-- Liste des réservations de l'utilisateur
+# Vérifier les erreurs de code
+
+npm run lint### Mes Réservations (`/my-bookings`)
+
+```- Liste des réservations de l'utilisateur
+
 - Statut : Confirmée, En attente, Annulée
-- Détails : dates, chambre, prix total
 
-## 🏨 Hôtels Disponibles
+---- Détails : dates, chambre, prix total
 
-| Hôtel | Ville | Note | Prix (Standard) |
-|-------|-------|------|-----------------|
-| Riad Jardin Secret | Marrakech | 4.8 | 850 MAD |
-| Four Seasons Casablanca | Casablanca | 4.9 | 2200 MAD |
+
+
+## 🌐 Déploiement sur Vercel## 🏨 Hôtels Disponibles
+
+
+
+1. Connectez votre repo GitHub à [vercel.com](https://vercel.com)| Hôtel | Ville | Note | Prix (Standard) |
+
+2. Ajoutez vos variables d'environnement Clerk|-------|-------|------|-----------------|
+
+3. Cliquez sur "Deploy"| Riad Jardin Secret | Marrakech | 4.8 | 850 MAD |
+
+4. C'est tout ! 🎉| Four Seasons Casablanca | Casablanca | 4.9 | 2200 MAD |
+
 | Riad Fès | Fès | 4.7 | 750 MAD |
-| Casa Perleta | Chefchaouen | 4.6 | 450 MAD |
+
+---| Casa Perleta | Chefchaouen | 4.6 | 450 MAD |
+
 | Villa Maroc | Essaouira | 4.5 | 650 MAD |
+
+## 📞 Support
 
 ## 🎨 Composants UI
 
+Des questions ? Ouvrez une issue sur GitHub.
+
 Tous les composants sont dans `src/components/ui.jsx` :
 
+---
+
 - **Button** - Boutons avec variantes (default, outline, ghost)
-- **Card** - Cartes avec header, content, footer
+
+Fait avec ❤️ au Maroc 🇲🇦- **Card** - Cartes avec header, content, footer
+
 - **Badge** - Badges colorés
 - **Input** - Champs de saisie
 - **Label** - Labels de formulaire
