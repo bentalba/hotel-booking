@@ -1,4 +1,4 @@
-import { clerkMiddleware } from "@clerk/nextjs";
+import { clerkMiddleware } from "@clerk/nextjs/server";
 
 // Middleware Clerk requis pour que auth()/useUser fonctionnent correctement.
 export default clerkMiddleware();
