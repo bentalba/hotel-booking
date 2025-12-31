@@ -1,144 +1,285 @@
-# ╔══════════════════════════════════════════════════════════════════════════╗<#
+# 🏨 Hotel Reservation System - Launcher# ╔══════════════════════════════════════════════════════════════════════════╗<#
 
-# ║                                                                          ║  Démarrage 1-clic (Windows)
+# Développé par: Oussama SAJJI - EMSI
 
-# ║     🏨  SYSTÈME DE GESTION HÔTELIÈRE - EMSI  🏨                          ║  - Installe les dépendances si besoin
+# PowerShell Script for Windows# ║                                                                          ║  Démarrage 1-clic (Windows)
+
+
+
+$Host.UI.RawUI.WindowTitle = "🏨 Hotel EMSI - Système de Gestion"# ║     🏨  SYSTÈME DE GESTION HÔTELIÈRE - EMSI  🏨                          ║  - Installe les dépendances si besoin
+
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
 # ║                                                                          ║  - Crée .env.local depuis .env.example si manquant
 
+Clear-Host
+
 # ║     Préparé par Oussama SAJJI                                            ║  - Lance l'application (npm run dev)
 
-# ║                                                                          ║
+Write-Host ""
 
-# ╚══════════════════════════════════════════════════════════════════════════╝  Usage (double-clic) : Demarrer.ps1
-
-  Usage (PowerShell)  : .\Demarrer.ps1
-
-# Script PowerShell pour Windows#>
-
-
-
-$Host.UI.RawUI.WindowTitle = "Hotel EMSI - Système de Gestion"$ErrorActionPreference = 'Stop'
-
-
-
-Write-Host ""function Write-Info($msg) { Write-Host $msg -ForegroundColor Cyan }
-
-Write-Host "╔══════════════════════════════════════════════════════════════════════════╗" -ForegroundColor Cyanfunction Write-Ok($msg)   { Write-Host $msg -ForegroundColor Green }
-
-Write-Host "║                                                                          ║" -ForegroundColor Cyanfunction Write-Warn($msg) { Write-Host $msg -ForegroundColor Yellow }
-
-Write-Host "║     🏨  SYSTÈME DE GESTION HÔTELIÈRE - EMSI  🏨                          ║" -ForegroundColor Cyan
-
-Write-Host "║                                                                          ║" -ForegroundColor Cyantry {
-
-Write-Host "║     Préparé par Oussama SAJJI                                            ║" -ForegroundColor Cyan  Set-Location -Path $PSScriptRoot
+Write-Host "╔══════════════════════════════════════════════════════════════════════════╗" -ForegroundColor Cyan# ║                                                                          ║
 
 Write-Host "║                                                                          ║" -ForegroundColor Cyan
 
-Write-Host "╚══════════════════════════════════════════════════════════════════════════╝" -ForegroundColor Cyan  Write-Host ""
+Write-Host "║     🏨  SYSTÈME DE GESTION HÔTELIÈRE - EMSI  🏨                          ║" -ForegroundColor Cyan# ╚══════════════════════════════════════════════════════════════════════════╝  Usage (double-clic) : Demarrer.ps1
 
-Write-Host ""  Write-Host "🏁 Démarrage Atlas (1 clic)" -ForegroundColor White
+Write-Host "║                                                                          ║" -ForegroundColor Cyan
 
-  Write-Host ""
+Write-Host "║     Préparé par Oussama SAJJI                                            ║" -ForegroundColor Cyan  Usage (PowerShell)  : .\Demarrer.ps1
 
-# Vérifier Node.js
+Write-Host "║                                                                          ║" -ForegroundColor Cyan
 
-try {  # 1) Vérifier Node
+Write-Host "╚══════════════════════════════════════════════════════════════════════════╝" -ForegroundColor Cyan# Script PowerShell pour Windows#>
 
-    $nodeVersion = node --version  if (-not (Get-Command node -ErrorAction SilentlyContinue)) {
+Write-Host ""
 
-    Write-Host "✅ Node.js détecté: $nodeVersion" -ForegroundColor Green    Write-Warn "Node.js n'est pas installé (commande 'node' introuvable)."
 
-} catch {    Write-Warn "Installe Node LTS puis réessaie."
 
-    Write-Host "❌ Node.js n'est pas installé!" -ForegroundColor Red    Pause
+# Check Node.js
 
-    Write-Host "📥 Téléchargez Node.js: https://nodejs.org/" -ForegroundColor Yellow    exit 1
+$nodeExists = Get-Command node -ErrorAction SilentlyContinue$Host.UI.RawUI.WindowTitle = "Hotel EMSI - Système de Gestion"$ErrorActionPreference = 'Stop'
 
-    Read-Host "Appuyez sur Entrée pour quitter"  }
+if (-not $nodeExists) {
+
+    Write-Host "❌ Node.js n'est pas installé!" -ForegroundColor Red
+
+    Write-Host ""
+
+    Write-Host "📥 Téléchargez Node.js: https://nodejs.org/" -ForegroundColor YellowWrite-Host ""function Write-Info($msg) { Write-Host $msg -ForegroundColor Cyan }
+
+    Write-Host ""
+
+    Read-Host "Appuyez sur Entrée pour quitter"Write-Host "╔══════════════════════════════════════════════════════════════════════════╗" -ForegroundColor Cyanfunction Write-Ok($msg)   { Write-Host $msg -ForegroundColor Green }
 
     exit 1
 
-}  # 2) Installer deps si node_modules absent
+}Write-Host "║                                                                          ║" -ForegroundColor Cyanfunction Write-Warn($msg) { Write-Host $msg -ForegroundColor Yellow }
 
-  if (-not (Test-Path -Path (Join-Path $PSScriptRoot 'node_modules'))) {
 
-Write-Host ""    Write-Info "📦 Installation des dépendances (npm install)..."
 
-    npm install
+Write-Host "✅ Node.js détecté: $(node --version)" -ForegroundColor GreenWrite-Host "║     🏨  SYSTÈME DE GESTION HÔTELIÈRE - EMSI  🏨                          ║" -ForegroundColor Cyan
 
-# Installer les dépendances si nécessaire    Write-Ok "✅ Dépendances installées"
+Write-Host ""
 
-if (-not (Test-Path "node_modules")) {  } else {
+Write-Host "║                                                                          ║" -ForegroundColor Cyantry {
 
-    Write-Host "📦 Installation des dépendances..." -ForegroundColor Yellow    Write-Ok "✅ Dépendances déjà installées"
+# Install dependencies if needed
 
-    npm install  }
+if (-not (Test-Path "node_modules")) {Write-Host "║     Préparé par Oussama SAJJI                                            ║" -ForegroundColor Cyan  Set-Location -Path $PSScriptRoot
+
+    Write-Host "📦 Installation des dépendances..." -ForegroundColor Yellow
+
+    npm installWrite-Host "║                                                                          ║" -ForegroundColor Cyan
 
     if ($LASTEXITCODE -ne 0) {
 
-        Write-Host "❌ Erreur lors de l'installation!" -ForegroundColor Red  # 3) Préparer .env.local
+        Write-Host "❌ Erreur lors de l'installation!" -ForegroundColor RedWrite-Host "╚══════════════════════════════════════════════════════════════════════════╝" -ForegroundColor Cyan  Write-Host ""
 
-        Read-Host "Appuyez sur Entrée pour quitter"  $envLocal = Join-Path $PSScriptRoot '.env.local'
+        Read-Host "Appuyez sur Entrée pour quitter"
 
-        exit 1  $envExample = Join-Path $PSScriptRoot '.env.example'
+        exit 1Write-Host ""  Write-Host "🏁 Démarrage Atlas (1 clic)" -ForegroundColor White
 
     }
 
-    Write-Host "✅ Dépendances installées!" -ForegroundColor Green  if (-not (Test-Path $envLocal) -and (Test-Path $envExample)) {
+    Write-Host "✅ Dépendances installées!" -ForegroundColor Green  Write-Host ""
 
-    Write-Host ""    Copy-Item $envExample $envLocal
+    Write-Host ""
 
-}    Write-Ok "✅ .env.local créé depuis .env.example"
+}# Vérifier Node.js
 
-    Write-Warn "ℹ️  Remplace les clés Clerk/Mapbox/DB dans .env.local si nécessaire."
 
-# Vérifier .env  }
+
+# Create .env if not existstry {  # 1) Vérifier Node
 
 if (-not (Test-Path ".env")) {
 
-    Write-Host "⚠️  Fichier .env manquant! Création..." -ForegroundColor Yellow  # 3bis) Initialiser DB (MySQL ou SQLite) si DATABASE_URL est défini
+    Write-Host "📝 Création du fichier .env..." -ForegroundColor Yellow    $nodeVersion = node --version  if (-not (Get-Command node -ErrorAction SilentlyContinue)) {
 
-    Copy-Item ".env.example" ".env"  if (Test-Path $envLocal) {
+    @"
 
-    Write-Host "✅ Fichier .env créé." -ForegroundColor Green    $envContent = Get-Content $envLocal -Raw
+# 🏨 Hotel Reservation System - Database Configuration    Write-Host "✅ Node.js détecté: $nodeVersion" -ForegroundColor Green    Write-Warn "Node.js n'est pas installé (commande 'node' introuvable)."
 
-    Write-Host "⚠️  IMPORTANT: Modifiez .env avec vos paramètres MySQL!" -ForegroundColor Yellow    if ($envContent -match "(?m)^DATABASE_URL\s*=\s*(.+)\s*$") {
+# Développé par: Oussama SAJJI - EMSI
 
-    notepad .env      $dbUrl = $Matches[1].Trim().Trim('"')
+} catch {    Write-Warn "Installe Node LTS puis réessaie."
 
-}      try {
+# MySQL Database Connection
 
-        Write-Info "🗄️  Initialisation DB (Prisma)..."
+DB_HOST=localhost    Write-Host "❌ Node.js n'est pas installé!" -ForegroundColor Red    Pause
 
-function Show-Menu {        npx prisma generate
+DB_PORT=3306
 
-    Write-Host ""        npx prisma db push
+DB_NAME=hotel_reservation    Write-Host "📥 Téléchargez Node.js: https://nodejs.org/" -ForegroundColor Yellow    exit 1
 
-    Write-Host "═══════════════════════════════════════════════════════════════════════════" -ForegroundColor Gray        if (Test-Path (Join-Path $PSScriptRoot 'prisma\seed.js')) {
+DB_USER=root
 
-    Write-Host ""          node .\prisma\seed.js
+DB_PASSWORD=    Read-Host "Appuyez sur Entrée pour quitter"  }
 
-    Write-Host "  Que souhaitez-vous faire?" -ForegroundColor White        }
 
-    Write-Host ""        Write-Ok "✅ DB prête"
 
-    Write-Host "  [1] 🚀 Démarrer le serveur API (Express.js)" -ForegroundColor White      }
+# Server Configuration    exit 1
 
-    Write-Host "  [2] 📋 Lancer le menu console (CLI)" -ForegroundColor White      catch {
+PORT=3000
 
-    Write-Host "  [3] 🔄 Synchroniser la base de données" -ForegroundColor White        Write-Warn "⚠️  Initialisation DB échouée. Vérifie MySQL (ou la connexion) puis relance."
+NODE_ENV=development}  # 2) Installer deps si node_modules absent
 
-    Write-Host "  [4] 🌱 Peupler la base avec des données de test" -ForegroundColor White        Write-Warn "Détail: $($_.Exception.Message)"
+"@ | Out-File -FilePath ".env" -Encoding UTF8
 
-    Write-Host "  [5] ⚠️  Réinitialiser la base de données" -ForegroundColor Yellow      }
+    Write-Host "✅ Fichier .env créé!" -ForegroundColor Green  if (-not (Test-Path -Path (Join-Path $PSScriptRoot 'node_modules'))) {
 
-    Write-Host "  [6] ⏰ Démarrer les tâches automatiques (Cron)" -ForegroundColor White    }
+    Write-Host ""
 
-    Write-Host "  [7] 📚 Ouvrir la documentation API (Swagger)" -ForegroundColor White  }
+}Write-Host ""    Write-Info "📦 Installation des dépendances (npm install)..."
 
-    Write-Host "  [8] ❌ Quitter" -ForegroundColor Red
+
+
+function Show-Menu {    npm install
+
+    Write-Host ""
+
+    Write-Host "═══════════════════════════════════════════════════════════════════════════" -ForegroundColor DarkGray# Installer les dépendances si nécessaire    Write-Ok "✅ Dépendances installées"
+
+    Write-Host ""
+
+    Write-Host "  Que souhaitez-vous faire?" -ForegroundColor Whiteif (-not (Test-Path "node_modules")) {  } else {
+
+    Write-Host ""
+
+    Write-Host "  [1] 🚀 Démarrer le serveur API" -ForegroundColor Green    Write-Host "📦 Installation des dépendances..." -ForegroundColor Yellow    Write-Ok "✅ Dépendances déjà installées"
+
+    Write-Host "  [2] 💻 Lancer le menu CLI interactif" -ForegroundColor Blue
+
+    Write-Host "  [3] 🔧 Configurer la base de données (MySQL)" -ForegroundColor Yellow    npm install  }
+
+    Write-Host "  [4] 🌱 Synchroniser et peupler la base" -ForegroundColor Magenta
+
+    Write-Host "  [5] 📚 Ouvrir la documentation API" -ForegroundColor Cyan    if ($LASTEXITCODE -ne 0) {
+
+    Write-Host "  [6] ❌ Quitter" -ForegroundColor Red
+
+    Write-Host ""        Write-Host "❌ Erreur lors de l'installation!" -ForegroundColor Red  # 3) Préparer .env.local
+
+    Write-Host "═══════════════════════════════════════════════════════════════════════════" -ForegroundColor DarkGray
+
+    Write-Host ""        Read-Host "Appuyez sur Entrée pour quitter"  $envLocal = Join-Path $PSScriptRoot '.env.local'
+
+}
+
+        exit 1  $envExample = Join-Path $PSScriptRoot '.env.example'
+
+do {
+
+    Show-Menu    }
+
+    $choice = Read-Host "Votre choix [1-6]"
+
+        Write-Host "✅ Dépendances installées!" -ForegroundColor Green  if (-not (Test-Path $envLocal) -and (Test-Path $envExample)) {
+
+    switch ($choice) {
+
+        "1" {    Write-Host ""    Copy-Item $envExample $envLocal
+
+            Write-Host ""
+
+            Write-Host "🚀 Démarrage du serveur API..." -ForegroundColor Green}    Write-Ok "✅ .env.local créé depuis .env.example"
+
+            Write-Host ""
+
+            Write-Host "   📚 Documentation: http://localhost:3000/api-docs" -ForegroundColor Cyan    Write-Warn "ℹ️  Remplace les clés Clerk/Mapbox/DB dans .env.local si nécessaire."
+
+            Write-Host "   🔗 API Base URL:  http://localhost:3000/api/v1" -ForegroundColor Cyan
+
+            Write-Host ""# Vérifier .env  }
+
+            Write-Host "   Appuyez sur Ctrl+C pour arrêter le serveur." -ForegroundColor Yellow
+
+            Write-Host ""if (-not (Test-Path ".env")) {
+
+            npm start
+
+        }    Write-Host "⚠️  Fichier .env manquant! Création..." -ForegroundColor Yellow  # 3bis) Initialiser DB (MySQL ou SQLite) si DATABASE_URL est défini
+
+        "2" {
+
+            Write-Host ""    Copy-Item ".env.example" ".env"  if (Test-Path $envLocal) {
+
+            Write-Host "💻 Lancement du menu CLI..." -ForegroundColor Blue
+
+            Write-Host ""    Write-Host "✅ Fichier .env créé." -ForegroundColor Green    $envContent = Get-Content $envLocal -Raw
+
+            npm run menu:enhanced
+
+        }    Write-Host "⚠️  IMPORTANT: Modifiez .env avec vos paramètres MySQL!" -ForegroundColor Yellow    if ($envContent -match "(?m)^DATABASE_URL\s*=\s*(.+)\s*$") {
+
+        "3" {
+
+            Write-Host ""    notepad .env      $dbUrl = $Matches[1].Trim().Trim('"')
+
+            Write-Host "🔧 Configuration de la base de données..." -ForegroundColor Yellow
+
+            Write-Host ""}      try {
+
+            npm run db:setup
+
+        }        Write-Info "🗄️  Initialisation DB (Prisma)..."
+
+        "4" {
+
+            Write-Host ""function Show-Menu {        npx prisma generate
+
+            Write-Host "🌱 Synchronisation de la base de données..." -ForegroundColor Magenta
+
+            npm run db:sync    Write-Host ""        npx prisma db push
+
+            Write-Host ""
+
+            Write-Host "🌱 Insertion des données de test..." -ForegroundColor Magenta    Write-Host "═══════════════════════════════════════════════════════════════════════════" -ForegroundColor Gray        if (Test-Path (Join-Path $PSScriptRoot 'prisma\seed.js')) {
+
+            npm run db:seed
+
+            Write-Host ""    Write-Host ""          node .\prisma\seed.js
+
+            Write-Host "✅ Base de données prête!" -ForegroundColor Green
+
+        }    Write-Host "  Que souhaitez-vous faire?" -ForegroundColor White        }
+
+        "5" {
+
+            Write-Host ""    Write-Host ""        Write-Ok "✅ DB prête"
+
+            Write-Host "📚 Ouverture de la documentation..." -ForegroundColor Cyan
+
+            Start-Process "http://localhost:3000/api-docs"    Write-Host "  [1] 🚀 Démarrer le serveur API (Express.js)" -ForegroundColor White      }
+
+            Write-Host "⚠️  Assurez-vous que le serveur est démarré (option 1)" -ForegroundColor Yellow
+
+        }    Write-Host "  [2] 📋 Lancer le menu console (CLI)" -ForegroundColor White      catch {
+
+        "6" {
+
+            Write-Host ""    Write-Host "  [3] 🔄 Synchroniser la base de données" -ForegroundColor White        Write-Warn "⚠️  Initialisation DB échouée. Vérifie MySQL (ou la connexion) puis relance."
+
+            Write-Host "👋 Au revoir!" -ForegroundColor Cyan
+
+            Start-Sleep -Seconds 1    Write-Host "  [4] 🌱 Peupler la base avec des données de test" -ForegroundColor White        Write-Warn "Détail: $($_.Exception.Message)"
+
+            exit 0
+
+        }    Write-Host "  [5] ⚠️  Réinitialiser la base de données" -ForegroundColor Yellow      }
+
+        default {
+
+            Write-Host ""    Write-Host "  [6] ⏰ Démarrer les tâches automatiques (Cron)" -ForegroundColor White    }
+
+            Write-Host "⚠️  Choix invalide! Veuillez entrer un nombre entre 1 et 6." -ForegroundColor Yellow
+
+        }    Write-Host "  [7] 📚 Ouvrir la documentation API (Swagger)" -ForegroundColor White  }
+
+    }
+
+} while ($true)    Write-Host "  [8] ❌ Quitter" -ForegroundColor Red
+
 
     Write-Host ""  # 4) Lancer
 
