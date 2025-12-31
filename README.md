@@ -39,7 +39,7 @@ Ouvre ensuite : http://localhost:3000
 ### Option Windows : un seul clic sur PowerShell
 
 Sur Windows, double-clique sur `Demarrer.bat` (ça appelle PowerShell avec les bons paramètres) ou fais **clic droit → Exécuter avec PowerShell** sur `Demarrer.ps1`.
-Le script vérifie Node, télécharge les dépendances (`npm install`) si besoin, crée `.env.local` et lance `npm run dev`.
+Le script vérifie Node, télécharge les dépendances (`npm install`) si besoin, crée `.env.local`, initialise la base SQLite si `DATABASE_URL=file:./dev.db` (Prisma generate + db push + seed), puis lance `npm run dev`.
 
 Si Windows bloque encore l’exécution des scripts, ouvre PowerShell dans le dossier et lance :
 
@@ -67,7 +67,7 @@ Le projet crée automatiquement `.env.local` à partir de `.env.example`.
 
 Pour activer l’authentification (Clerk) et la carte (Mapbox), remplace les valeurs dans `.env.local`.
 
-## �️ Base de données SQL (rapide)
+## 🗄️ Base de données SQL (rapide)
 
 Le projet peut fonctionner en **mode démo** (données mock), mais tu peux aussi créer une **base SQL locale** rapidement.
 
@@ -85,7 +85,7 @@ npx prisma db push
 node prisma/seed.js
 ```
 
-## �📁 Structure (minimum de fichiers)
+## 📁 Structure (minimum de fichiers)
 
 ```
 src/
