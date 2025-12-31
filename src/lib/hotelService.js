@@ -17,11 +17,30 @@ export function comparerChambres(a, b) {
   return a.numero.localeCompare(b.numero);
 }
 
+// Compare deux chambres par numéro et retourne un booléen (égalité)
+export function chambresEgales(a, b) {
+  return a.numero === b.numero;
+}
+
 export function calculerDureeSejour(dateDebut, dateFin) {
   const d1 = new Date(dateDebut);
   const d2 = new Date(dateFin);
   const delta = Math.max(1, differenceInCalendarDays(d2, d1));
   return delta;
+}
+
+// Vérifie l'existence d'une réservation par code
+export async function reservationExiste(code) {
+  const count = await prisma.reservation.count({ where: { code } });
+  return count > 0;
+}
+
+// Récupère/affiche une réservation (client + chambres)
+export function afficherReservation(code) {
+  return prisma.reservation.findUnique({
+    where: { code },
+    include: { client: true, chambres: { include: { chambre: true } } },
+  });
 }
 
 // Vérifie la dispo d'une chambre sur une période
@@ -38,6 +57,11 @@ export async function checkDisponibiliteChambre(chambreId, dateDebut, dateFin) {
     },
   });
   return !overlap;
+}
+
+// Teste si une chambre est déjà réservée sur une période (booléen direct)
+export async function chambreDejaReservee(chambreId, dateDebut, dateFin) {
+  return !(await checkDisponibiliteChambre(chambreId, dateDebut, dateFin));
 }
 
 // Ajoute une chambre à une réservation (avec limite et anti-doublon)
@@ -80,6 +104,12 @@ export async function supprimerChambreReservation({ reservationId, chambreId }) 
   });
   if (deleted.count === 0) throw new Error("Chambre non trouvée dans la réservation.");
   return true;
+}
+
+// Supprimer complètement une réservation par code
+export async function supprimerReservation(code) {
+  const res = await prisma.reservation.delete({ where: { code } });
+  return res;
 }
 
 // Historique d'un client
@@ -125,6 +155,24 @@ export async function autoCloturerReservationsDuJour({ etat = "Expiree" } = {}) 
   return res.count;
 }
 
+// Valider / annuler une réservation (modifier état)
+export async function changerEtatReservation(code, etat) {
+  return prisma.reservation.update({ where: { code }, data: { etat } });
+}
+
+// Modifier dates et/ou chambres d'une réservation (ex: changer période)
+export async function modifierReservation({ code, dateDebut, dateFin, etat }) {
+  const data = {};
+  if (dateDebut) data.dateDebut = new Date(dateDebut);
+  if (dateFin) data.dateFin = new Date(dateFin);
+  if (etat) data.etat = etat;
+  return prisma.reservation.update({
+    where: { code },
+    data,
+    include: { client: true, chambres: { include: { chambre: true } } },
+  });
+}
+
 // Création de réservation (avec chambres) + vérif disponibilité
 export async function creerReservationAvecChambres({ clientId, chambreIds = [], dateDebut, dateFin, etat = "EnCours" }) {
   const code = `RES-${Date.now().toString(36).toUpperCase()}`;
@@ -158,4 +206,17 @@ export async function creerReservationAvecChambres({ clientId, chambreIds = [], 
 export async function clientAReservations(clientId) {
   const count = await prisma.reservation.count({ where: { clientId } });
   return count > 0;
+}
+
+// Liste toutes les réservations (affichage tableau complet)
+export function listerReservations() {
+  return prisma.reservation.findMany({
+    include: { client: true, chambres: { include: { chambre: true } } },
+    orderBy: { createdAt: "desc" },
+  });
+}
+
+// Vérifie si une réservation existe par code (tableau n réservations)
+export async function reservationExisteParCode(code) {
+  return reservationExiste(code);
 }
