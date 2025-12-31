@@ -1,446 +1,889 @@
-# 🏨 Système de Gestion Hôtelière - EMSI# 🏨 Systeme de Gestion Hotel# 🏨 Atlas — Réservation d’hôtels (Maroc)
+<div align="center"># 🏨 Système de Gestion Hôtelière - EMSI# 🏨 Systeme de Gestion Hotel# 🏨 Atlas — Réservation d’hôtels (Maroc)
 
 
 
-![Node.js](https://img.shields.io/badge/Node.js-18+-green)
-
-![Express.js](https://img.shields.io/badge/Express.js-4.18-blue)
-
-![Sequelize](https://img.shields.io/badge/Sequelize-6.35-orange)**Projet EMSI - Prepare par OUSSAMA SAJJI****Projet d’examen EMSI**  
-
-![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
-
-**Auteur : OUSSAMA SAJJI**
-
-**Projet de Gestion de Réservations Hôtelières**  
-
-Préparé par **Oussama SAJJI** - EMSI---
+# 🏨 Hotel Reservation System
 
 
 
----## 📝 Description (très courte)
+### Système de Gestion de Réservations Hôtelières![Node.js](https://img.shields.io/badge/Node.js-18+-green)
 
 
 
-## 📋 Table des Matières## 📝 Description
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)![Express.js](https://img.shields.io/badge/Express.js-4.18-blue)
+
+[![Express.js](https://img.shields.io/badge/Express.js-4.18-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
+
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://mysql.com/)![Sequelize](https://img.shields.io/badge/Sequelize-6.35-orange)**Projet EMSI - Prepare par OUSSAMA SAJJI****Projet d’examen EMSI**  
+
+[![Sequelize](https://img.shields.io/badge/Sequelize-6.35-52B0E7?style=for-the-badge&logo=sequelize&logoColor=white)](https://sequelize.org/)
+
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
 
 
 
-- [Description](#-description)Atlas est une mini-application web de réservation d’hôtels au Maroc :
+---**Auteur : OUSSAMA SAJJI**
 
-- [Architecture](#-architecture)
 
-- [Fonctionnalités](#-fonctionnalités)Application de gestion d'un hotel de 80 chambres avec :- recherche d’hôtels par ville
 
-- [Prérequis](#-prérequis)
+**Une application complète de gestion hôtelière avec API REST, documentation Swagger, et interface CLI interactive.****Projet de Gestion de Réservations Hôtelières**  
+
+
+
+*Développé par* ***Oussama SAJJI*** *-* ***EMSI***Préparé par **Oussama SAJJI** - EMSI---
+
+
+
+[📚 Documentation](#-documentation-api) • [🚀 Installation](#-installation-rapide) • [💻 CLI Menu](#-menu-interactif-cli) • [🔧 Configuration](#-configuration)
+
+
+
+------## 📝 Description (très courte)
+
+
+
+</div>
+
+
+
+## 📋 Table des Matières## 📋 Table des Matières## 📝 Description
+
+
+
+- [✨ Fonctionnalités](#-fonctionnalités)
+
+- [🏗️ Architecture](#️-architecture)
+
+- [🚀 Installation Rapide](#-installation-rapide)- [Description](#-description)Atlas est une mini-application web de réservation d’hôtels au Maroc :
+
+- [🔧 Configuration](#-configuration)
+
+- [💻 Menu Interactif CLI](#-menu-interactif-cli)- [Architecture](#-architecture)
+
+- [📚 Documentation API](#-documentation-api)
+
+- [📊 Modèles de Données](#-modèles-de-données)- [Fonctionnalités](#-fonctionnalités)Application de gestion d'un hotel de 80 chambres avec :- recherche d’hôtels par ville
+
+- [🔄 Workflow des Réservations](#-workflow-des-réservations)
+
+- [☕ Version Java](#-version-java)- [Prérequis](#-prérequis)
+
+- [🤝 Contribution](#-contribution)
 
 - [Installation](#-installation)- Gestion des clients- sélection d’une chambre + dates
 
+---
+
 - [Configuration](#-configuration)
+
+## ✨ Fonctionnalités
 
 - [Démarrage](#-démarrage)- Gestion des chambres  - affichage du prix en **MAD**
 
-- [API Documentation](#-api-documentation)
+<table>
+
+<tr>- [API Documentation](#-api-documentation)
+
+<td width="50%">
 
 - [Structure du Projet](#-structure-du-projet)- Gestion des reservations (creation, modification, validation, annulation)- page “Mes réservations” (données de démonstration)
 
-- [Base de Données](#-base-de-données)
+### 👥 Gestion des Clients
 
-- Interface web moderne (Next.js)
+- ➕ Création de clients- [Base de Données](#-base-de-données)
+
+- 📋 Liste et recherche
+
+- ✏️ Modification des informations- Interface web moderne (Next.js)
+
+- 🗑️ Suppression sécurisée
 
 ---
 
-- Programme console interactif avec menu## 🛠️ Comment c’est construit (simple)
+</td>
 
-## 📝 Description
+<td width="50%">- Programme console interactif avec menu## 🛠️ Comment c’est construit (simple)
 
 
 
-Ce système permet la gestion complète d'un hôtel incluant :
+### 🛏️ Gestion des Chambres## 📝 Description
 
-- **Gestion des clients** (CRUD complet)---- **Next.js 16 (App Router)** + **React 19** pour le front.
+- 🏠 Maximum 80 chambres
 
-- **Gestion des chambres** (80 chambres sur 8 étages)
+- 📞 Attribution téléphone
+
+- ✅ Vérification disponibilité
+
+- 📅 Recherche par périodeCe système permet la gestion complète d'un hôtel incluant :
+
+
+
+</td>- **Gestion des clients** (CRUD complet)---- **Next.js 16 (App Router)** + **React 19** pour le front.
+
+</tr>
+
+<tr>- **Gestion des chambres** (80 chambres sur 8 étages)
+
+<td width="50%">
 
 - **Gestion des réservations** (création, validation, annulation, clôture)- **Tailwind CSS** pour le style minimal.
 
-- **Vérification de disponibilité** automatique
+### 📅 Gestion des Réservations
 
-- **Tâches automatiques** (cron jobs pour clôture automatique)## 🏗️ Architecture du Systeme- **Clerk** pour l’authentification (localisation FR).
+- 🔑 Code unique automatique- **Vérification de disponibilité** automatique
 
+- 🔄 États: Pending → Validated → Closed
 
+- ➕ Ajout/Retrait de chambres- **Tâches automatiques** (cron jobs pour clôture automatique)## 🏗️ Architecture du Systeme- **Clerk** pour l’authentification (localisation FR).
 
----- **react-day-picker** + **date-fns** pour les dates.
-
-
-
-## 🏗 Architecture```- Turbopack activé pour des démarrages rapides en dev.
+- ⏰ Auto-clôture des réservations expirées
 
 
 
-```┌─────────────────────────────────────────────────────────────────────────────┐
+</td>
 
-┌─────────────────────────────────────────────────────────────────┐
+<td width="50%">---- **react-day-picker** + **date-fns** pour les dates.
 
-│                         CLIENT                                  ││                        SYSTEME DE GESTION HOTEL                             │## ✅ Démarrage “1 clic” (zéro setup manuel)
 
-│                    (Navigateur / CLI)                           │
 
-└─────────────────────────────────────────────────────────────────┘│                        Projet EMSI - Oussama SAJJI                          │
+### 📊 Dashboard & Statistiques
 
-                              │
+- 📈 Vue d'ensemble du système
 
-                              ▼└─────────────────────────────────────────────────────────────────────────────┘Après avoir cloné le projet, tu as **une seule action** à faire.
+- 📉 Répartition par état## 🏗 Architecture```- Turbopack activé pour des démarrages rapides en dev.
 
-┌─────────────────────────────────────────────────────────────────┐
+- 🏆 Statistiques en temps réel
 
-│                      API LAYER (Express.js)                     │                                    │
+- 📋 Rapports détaillés
 
-│  ┌──────────────┐  ┌──────────────┐  ┌────────────────────┐    │
 
-│  │ /api/clients │  │ /api/chambres│  │ /api/reservations  │    │          ┌─────────────────────────┼─────────────────────────┐### Option A (recommandée) : une commande
 
-│  └──────────────┘  └──────────────┘  └────────────────────┘    │
+</td>```┌─────────────────────────────────────────────────────────────────────────────┐
 
-└─────────────────────────────────────────────────────────────────┘          │                         │                         │
+</tr>
 
-                              │
+</table>┌─────────────────────────────────────────────────────────────────┐
 
-                              ▼          ▼                         ▼                         ▼```bash
 
-┌─────────────────────────────────────────────────────────────────┐
 
-│                    SERVICE LAYER (Business Logic)               │┌─────────────────┐     ┌─────────────────────┐     ┌─────────────────┐npm run demarrer
+---│                         CLIENT                                  ││                        SYSTEME DE GESTION HOTEL                             │## ✅ Démarrage “1 clic” (zéro setup manuel)
 
-│  ┌───────────────┐  ┌───────────────┐  ┌───────────────────┐   │
 
-│  │ ClientService │  │ChambreService │  │ReservationService │   ││   INTERFACE     │     │    INTERFACE        │     │   BASE DE       │```
 
-│  └───────────────┘  └───────────────┘  └───────────────────┘   │
+## 🏗️ Architecture│                    (Navigateur / CLI)                           │
 
-│                                              ▲                   ││   WEB           │     │    CONSOLE          │     │   DONNEES       │
+
+
+```└─────────────────────────────────────────────────────────────────┘│                        Projet EMSI - Oussama SAJJI                          │
+
+hotel-reservation-system/
+
+├── 📁 src/                              │
+
+│   ├── 📁 config/          # Configuration DB & Swagger
+
+│   │   ├── database.js     # Sequelize + MySQL                              ▼└─────────────────────────────────────────────────────────────────────────────┘Après avoir cloné le projet, tu as **une seule action** à faire.
+
+│   │   └── swagger.js      # OpenAPI 3.0
+
+│   ├── 📁 models/          # Modèles Sequelize┌─────────────────────────────────────────────────────────────────┐
+
+│   │   ├── Client.js
+
+│   │   ├── Chambre.js│                      API LAYER (Express.js)                     │                                    │
+
+│   │   ├── Reservation.js
+
+│   │   └── ReservationChambre.js│  ┌──────────────┐  ┌──────────────┐  ┌────────────────────┐    │
+
+│   ├── 📁 services/        # Logique métier
+
+│   │   ├── ClientService.js│  │ /api/clients │  │ /api/chambres│  │ /api/reservations  │    │          ┌─────────────────────────┼─────────────────────────┐### Option A (recommandée) : une commande
+
+│   │   ├── ChambreService.js
+
+│   │   └── ReservationService.js│  └──────────────┘  └──────────────┘  └────────────────────┘    │
+
+│   ├── 📁 controllers/     # Handlers HTTP
+
+│   │   ├── ClientController.js└─────────────────────────────────────────────────────────────────┘          │                         │                         │
+
+│   │   ├── ChambreController.js
+
+│   │   └── ReservationController.js                              │
+
+│   ├── 📁 routes/          # Routes Express
+
+│   │   └── api.js                              ▼          ▼                         ▼                         ▼```bash
+
+│   ├── 📁 scripts/         # Utilitaires
+
+│   │   ├── databaseSetup.js   # 🆕 Setup interactif┌─────────────────────────────────────────────────────────────────┐
+
+│   │   ├── syncDatabase.js
+
+│   │   └── seedDatabase.js│                    SERVICE LAYER (Business Logic)               │┌─────────────────┐     ┌─────────────────────┐     ┌─────────────────┐npm run demarrer
+
+│   ├── 📁 cli/             # Interface console
+
+│   │   ├── menu.js│  ┌───────────────┐  ┌───────────────┐  ┌───────────────────┐   │
+
+│   │   └── menu-enhanced.js   # 🆕 Version améliorée
+
+│   └── index.js            # Point d'entrée│  │ ClientService │  │ChambreService │  │ReservationService │   ││   INTERFACE     │     │    INTERFACE        │     │   BASE DE       │```
+
+├── 📁 java/                # Version Java POO
+
+├── 📄 .env                 # Variables d'environnement│  └───────────────┘  └───────────────┘  └───────────────────┘   │
+
+├── 📄 package.json
+
+└── 📄 README.md│                                              ▲                   ││   WEB           │     │    CONSOLE          │     │   DONNEES       │
+
+```
 
 │                           THE ENGINE ────────┘                   │
 
+### 🔄 Architecture en Couches
+
 │           (Availability Check, Room Limits, Duration Calc)       ││   (Next.js)     │     │    (menu.js)        │     │   (MySQL)       │Ce script fait automatiquement :
 
-└─────────────────────────────────────────────────────────────────┘
+```
 
-                              │└────────┬────────┘     └──────────┬──────────┘     └────────┬────────┘- installation des dépendances (`npm install`) si besoin
+┌─────────────────────────────────────────────────────────────┐└─────────────────────────────────────────────────────────────────┘
 
-                              ▼
+│                     🌐 CLIENT (Browser/CLI)                  │
 
-┌─────────────────────────────────────────────────────────────────┐         │                         │                         │- création de `.env.local` depuis `.env.example` si le fichier n’existe pas
+└────────────────────────────┬────────────────────────────────┘                              │└────────┬────────┘     └──────────┬──────────┘     └────────┬────────┘- installation des dépendances (`npm install`) si besoin
 
-│                  DATA ACCESS LAYER (Sequelize ORM)              │
+                             │
 
-│  ┌────────┐  ┌─────────┐  ┌─────────────┐  ┌─────────────────┐ │         └─────────────────────────┼─────────────────────────┘- lancement de l’app (`npm run dev`)
+┌────────────────────────────▼────────────────────────────────┐                              ▼
 
-│  │ Client │  │ Chambre │  │ Reservation │  │ReservationChambre│ │
+│                   📡 API REST (Express.js)                   │
 
-│  └────────┘  └─────────┘  └─────────────┘  └─────────────────┘ │                                   │
+│                    Port: 3000                                │┌─────────────────────────────────────────────────────────────────┐         │                         │                         │- création de `.env.local` depuis `.env.example` si le fichier n’existe pas
 
-└─────────────────────────────────────────────────────────────────┘
+├─────────────────────────────────────────────────────────────┤
 
-                              │                                   ▼Ouvre ensuite : http://localhost:3000
+│  GET  /api/v1/clients      │  POST /api/v1/reservations     ││                  DATA ACCESS LAYER (Sequelize ORM)              │
 
-                              ▼
+│  GET  /api/v1/chambres     │  PUT  /api/v1/reservations/:id │
 
-┌─────────────────────────────────────────────────────────────────┐                    ┌──────────────────────────────┐
+│  GET  /api/v1/reservations │  GET  /api-docs                ││  ┌────────┐  ┌─────────┐  ┌─────────────┐  ┌─────────────────┐ │         └─────────────────────────┼─────────────────────────┘- lancement de l’app (`npm run dev`)
 
-│                         MySQL Database                          │
+└────────────────────────────┬────────────────────────────────┘
 
-│                    (hotel_reservation)                          │                    │      CLASSES METIER          │### Option Windows : un seul clic sur PowerShell
+                             ││  │ Client │  │ Chambre │  │ Reservation │  │ReservationChambre│ │
 
-└─────────────────────────────────────────────────────────────────┘
+┌────────────────────────────▼────────────────────────────────┐
 
-```                    │  (src/lib/classes/)          │
+│                 🎯 CONTROLLERS (HTTP Handlers)               ││  └────────┘  └─────────┘  └─────────────┘  └─────────────────┘ │                                   │
+
+│    ClientController │ ChambreController │ ReservationCtrl    │
+
+└────────────────────────────┬────────────────────────────────┘└─────────────────────────────────────────────────────────────────┘
+
+                             │
+
+┌────────────────────────────▼────────────────────────────────┐                              │                                   ▼Ouvre ensuite : http://localhost:3000
+
+│                  💼 SERVICES (Business Logic)                │
+
+│     ClientService │ ChambreService │ ReservationService      │                              ▼
+
+└────────────────────────────┬────────────────────────────────┘
+
+                             │┌─────────────────────────────────────────────────────────────────┐                    ┌──────────────────────────────┐
+
+┌────────────────────────────▼────────────────────────────────┐
+
+│                   📊 MODELS (Sequelize ORM)                  ││                         MySQL Database                          │
+
+│       Client │ Chambre │ Reservation │ ReservationChambre    │
+
+└────────────────────────────┬────────────────────────────────┘│                    (hotel_reservation)                          │                    │      CLASSES METIER          │### Option Windows : un seul clic sur PowerShell
+
+                             │
+
+┌────────────────────────────▼────────────────────────────────┐└─────────────────────────────────────────────────────────────────┘
+
+│                      🗄️ MySQL Database                       │
+
+│                   hotel_reservation                          │```                    │  (src/lib/classes/)          │
+
+└─────────────────────────────────────────────────────────────┘
+
+```
 
 
 
----                    ├──────────────────────────────┤Sur Windows, double-clique sur `Demarrer.bat` (ça appelle PowerShell avec les bons paramètres) ou fais **clic droit → Exécuter avec PowerShell** sur `Demarrer.ps1`.
+------                    ├──────────────────────────────┤Sur Windows, double-clique sur `Demarrer.bat` (ça appelle PowerShell avec les bons paramètres) ou fais **clic droit → Exécuter avec PowerShell** sur `Demarrer.ps1`.
 
 
 
-## ✨ Fonctionnalités                    │  • Client.js                 │Le script vérifie Node, télécharge les dépendances (`npm install`) si besoin, crée `.env.local`, tente d’initialiser la base MySQL (Prisma generate + db push + seed) si `DATABASE_URL` pointe sur MySQL, puis lance `npm run dev`. Si MySQL n’est pas accessible, un avertissement s’affiche mais le serveur démarre quand même (mode mock possible).
+## 🚀 Installation Rapide
 
 
 
-### Gestion des Clients                    │  • Chambre.js                │
+### Prérequis## ✨ Fonctionnalités                    │  • Client.js                 │Le script vérifie Node, télécharge les dépendances (`npm install`) si besoin, crée `.env.local`, tente d’initialiser la base MySQL (Prisma generate + db push + seed) si `DATABASE_URL` pointe sur MySQL, puis lance `npm run dev`. Si MySQL n’est pas accessible, un avertissement s’affiche mais le serveur démarre quand même (mode mock possible).
 
-- ✅ Créer, modifier, supprimer des clients
 
-- ✅ Rechercher par nom                    │  • Reservation.js            │Si Windows bloque encore l’exécution des scripts, ouvre PowerShell dans le dossier et lance :
 
-- ✅ Vérifier les réservations actives avant suppression
+- **Node.js** >= 18.0.0
+
+- **MySQL** >= 8.0
+
+- **npm** ou **yarn**### Gestion des Clients                    │  • Chambre.js                │
+
+
+
+### 📦 Installation- ✅ Créer, modifier, supprimer des clients
+
+
+
+```bash- ✅ Rechercher par nom                    │  • Reservation.js            │Si Windows bloque encore l’exécution des scripts, ouvre PowerShell dans le dossier et lance :
+
+# 1. Cloner le repository
+
+git clone https://github.com/oussama-sajji/hotel-reservation-system.git- ✅ Vérifier les réservations actives avant suppression
+
+cd hotel-reservation-system
 
                     │  • GestionReservations.js    │
 
-### Gestion des Chambres
+# 2. Installer les dépendances
 
-- ✅ 80 chambres sur 8 étages (101-810)                    └──────────────────────────────┘```powershell
+npm install### Gestion des Chambres
+
+
+
+# 3. Configurer la base de données (interactif)- ✅ 80 chambres sur 8 étages (101-810)                    └──────────────────────────────┘```powershell
+
+npm run db:setup
 
 - ✅ Vérification des doublons
 
-- ✅ Numéro unique par chambre                                   │powershell -NoProfile -ExecutionPolicy Bypass -File ".\Demarrer.ps1"
+# 4. Démarrer le serveur
+
+npm start- ✅ Numéro unique par chambre                                   │powershell -NoProfile -ExecutionPolicy Bypass -File ".\Demarrer.ps1"
+
+```
 
 
+
+### 🖱️ Démarrage en 1 Clic
 
 ### Gestion des Réservations                    ┌──────────────┴──────────────┐```
 
-- ✅ **Availability Check** : Vérification automatique de disponibilité
+| Système | Fichier | Action |
 
-- ✅ **Room Limit (80 max)** : Limite de chambres par réservation                    │                             │
+|---------|---------|--------|- ✅ **Availability Check** : Vérification automatique de disponibilité
+
+| 🪟 Windows | `Demarrer.bat` | Double-cliquer |
+
+| 🪟 Windows (PowerShell) | `Demarrer.ps1` | Clic droit → Exécuter |- ✅ **Room Limit (80 max)** : Limite de chambres par réservation                    │                             │
+
+| 🍎 macOS | `Demarrer.command` | Double-cliquer |
 
 - ✅ **Duration Calculator** : Calcul automatique de la durée
 
+---
+
 - ✅ **State Management** : Pending → Validated → Closed / Canceled                    ▼                             ▼Cela contourne la restriction uniquement pour cette session.
+
+## 🔧 Configuration
 
 - ✅ **Transactions atomiques** pour l'intégrité des données
 
+### Variables d'Environnement (`.env`)
+
          ┌─────────────────┐           ┌─────────────────┐
 
-### Tâches Automatiques (Cron Jobs)
+```env
 
-- ⏰ Clôture automatique des réservations expirées (minuit)         │  Prisma ORM     │           │  Service Hotel  │Alternative (si tu préfères une commande) :
+# 🗄️ Base de données MySQL### Tâches Automatiques (Cron Jobs)
 
-- ⏰ Annulation des réservations en attente expirées (toutes les heures)
+DB_HOST=localhost
 
-- ⏰ Rapport quotidien (8h00)         │  (schema.prisma)│           │  (hotelService) │
+DB_PORT=3306- ⏰ Clôture automatique des réservations expirées (minuit)         │  Prisma ORM     │           │  Service Hotel  │Alternative (si tu préfères une commande) :
 
+DB_NAME=hotel_reservation
 
-
----         └────────┬────────┘           └─────────────────┘```bash
-
-
-
-## 📋 Prérequis                  │npm run demarrer:win
-
-
-
-- **Node.js** >= 18.0.0                  ▼```
-
-- **MySQL** >= 5.7 (via XAMPP, WAMP, ou MySQL Server)
-
-- **npm** ou **yarn**         ┌─────────────────┐
-
-
-
----         │     MySQL       │### Option B (macOS) : double-clic
-
-
-
-## 🚀 Installation         │   (DATABASE)    │
-
-
-
-### Windows (1-Click)         └─────────────────┘Double-clique sur `Demarrer.command`.
-
-
-
-1. Double-cliquez sur `Demarrer.bat` ou `Demarrer.ps1````
-
-2. Le script installera automatiquement les dépendances
-
-3. Suivez le menu interactif> macOS peut demander l’autorisation d’exécuter le fichier la première fois.
-
-
-
-### Manuel---
-
-
-
-```bash## 🔑 Variables d’environnement
-
-# Cloner le projet
-
-git clone <url-du-repo>## 📁 Structure des Fichiers
-
-cd oussama
-
-Le projet crée automatiquement `.env.local` à partir de `.env.example`.
-
-# Installer les dépendances
-
-npm install```
-
-
-
-# Copier le fichier de configurationhotel-booking/Pour activer l’authentification (Clerk) et la carte (Mapbox), remplace les valeurs dans `.env.local`.
-
-cp .env.example .env
-
-│
-
-# Modifier .env avec vos paramètres MySQL
-
-```├── 📄 menu.js                    # Programme principal avec menu console## 🗄️ Base de données SQL (MySQL)
-
-
-
----├── 📄 package.json               # Dependances du projet
-
-
-
-## ⚙️ Configuration├── 📄 README.md                  # Ce fichier- Dans `.env.local`, configure :
-
-
-
-Modifiez le fichier `.env` :│    - `DATABASE_URL="mysql://user:password@localhost:3306/hotel_db"`
-
-
-
-```env├── 📁 prisma/- Assure-toi que MySQL tourne et que la base existe.
-
-# Configuration MySQL
-
-DB_HOST=localhost│   ├── schema.prisma             # Schema de la base de donnees MySQL- Initialisation :
-
-DB_PORT=3306
-
-DB_USER=root│   └── seed.js                   # Donnees initiales (clients, chambres)    ```bash
+DB_USER=root- ⏰ Annulation des réservations en attente expirées (toutes les heures)
 
 DB_PASSWORD=
 
-DB_NAME=hotel_reservation│    npx prisma generate
+- ⏰ Rapport quotidien (8h00)         │  (schema.prisma)│           │  (hotelService) │
 
-
-
-# Configuration Serveur├── 📁 src/    npx prisma db push
+# 🌐 Serveur
 
 PORT=3000
 
-NODE_ENV=development│   ├── 📁 lib/    node prisma/seed.js
+NODE_ENV=development
 
-```
+```---         └────────┬────────┘           └─────────────────┘```bash
 
-│   │   ├── 📁 classes/           # CLASSES METIER    ```
 
-### Créer la base de données MySQL
 
-│   │   │   ├── Client.js         # Classe Client- Les scripts 1-clic tenteront aussi `db push` + `seed` ; en cas d’échec (MySQL down ou credentials), un avertissement est affiché mais le serveur démarre (données mock toujours possibles).
+### 📜 Scripts NPM Disponibles
 
-```sql
 
-CREATE DATABASE IF NOT EXISTS hotel_reservation;│   │   │   ├── Chambre.js        # Classe Chambre
 
-```
+| Commande | Description |## 📋 Prérequis                  │npm run demarrer:win
 
-│   │   │   ├── Reservation.js    # Classe Reservation## 📁 Structure (minimum de fichiers)
+|----------|-------------|
+
+| `npm start` | 🚀 Démarrer le serveur API |
+
+| `npm run dev` | 🔄 Mode développement (hot-reload) |
+
+| `npm run menu` | 💻 Lancer le menu CLI |- **Node.js** >= 18.0.0                  ▼```
+
+| `npm run menu:enhanced` | ✨ Menu CLI version améliorée |
+
+| `npm run db:setup` | 🔧 Configuration interactive DB |- **MySQL** >= 5.7 (via XAMPP, WAMP, ou MySQL Server)
+
+| `npm run db:sync` | 🔄 Synchroniser les tables |
+
+| `npm run db:seed` | 🌱 Insérer données de test |- **npm** ou **yarn**         ┌─────────────────┐
+
+| `npm run db:reset` | 🗑️ Réinitialiser la base |
+
+
 
 ---
 
-│   │   │   ├── GestionReservations.js  # Gestion tableau reservations
+---         │     MySQL       │### Option B (macOS) : double-clic
 
-## ▶️ Démarrage
+## 💻 Menu Interactif CLI
 
-│   │   │   └── index.js          # Export des classes```
 
-### Serveur API
 
-│   │   │src/
+Lancez le menu interactif avec:
+
+## 🚀 Installation         │   (DATABASE)    │
 
 ```bash
 
-# Développement (avec hot reload)│   │   ├── hotelService.js       # Service de connexion MySQL/Prisma├── composants.jsx         (UI : boutons, cards, calendrier, toast…)
-
-npm run dev
-
-│   │   └── donnees.js            # Donnees mock pour l'interface web├── lib/donnees.js         (données mock + utilitaires)
-
-# Production
-
-npm start│   │├── lib/hotelService.js    (logique Métier + Prisma MySQL)
+npm run menu:enhanced
 
 ```
 
-│   └── 📁 app/                   # Pages Next.js (interface web)└── app/
+### Windows (1-Click)         └─────────────────┘Double-clique sur `Demarrer.command`.
 
-Le serveur démarre sur `http://localhost:3000`
+### 🖥️ Aperçu
 
-│       ├── page.jsx              # Page d'accueil    ├── layout.jsx         (mise en page)
 
-### Menu Console (CLI)
-
-│       ├── layout.jsx            # Layout principal    ├── providers.jsx      (providers client : Toast)
-
-```bash
-
-npm run cli│       ├── 📁 recherche/         # Page de recherche    ├── page.jsx           (accueil)
 
 ```
 
-│       └── 📁 reservations/      # Page des reservations    ├── recherche/         (recherche + actions serveur)
+██╗  ██╗ ██████╗ ████████╗███████╗██╗         ███████╗███╗   ███╗███████╗██╗1. Double-cliquez sur `Demarrer.bat` ou `Demarrer.ps1````
 
-### Scripts de Base de Données
+██║  ██║██╔═══██╗╚══██╔══╝██╔════╝██║         ██╔════╝████╗ ████║██╔════╝██║
 
-│    └── reservations/      (mes réservations + actions Prisma)
+███████║██║   ██║   ██║   █████╗  ██║         █████╗  ██╔████╔██║███████╗██║2. Le script installera automatiquement les dépendances
 
-```bash
+██╔══██║██║   ██║   ██║   ██╔══╝  ██║         ██╔══╝  ██║╚██╔╝██║╚════██║██║
 
-# Synchroniser les tables├── 📁 scripts/```
+██║  ██║╚██████╔╝   ██║   ███████╗███████╗    ███████╗██║ ╚═╝ ██║███████║██║3. Suivez le menu interactif> macOS peut demander l’autorisation d’exécuter le fichier la première fois.
 
-npm run db:sync
-
-│   └── demarrer.js               # Script de demarrage automatique
-
-# Peupler avec des données de test
-
-npm run db:seed│## 🧪 Commandes utiles
+╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚══════╝╚══════╝    ╚══════╝╚═╝     ╚═╝╚══════╝╚═╝
 
 
+
+═══════════════════════════════════════════════════════════════════════════════
+
+    ⭐ Système de Gestion de Réservations Hôtelières ⭐### Manuel---
+
+    ✨ Développé par: Oussama SAJJI - EMSI ✨
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+
+  📊 Aperçu Rapide:```bash## 🔑 Variables d’environnement
+
+
+
+      👥 Clients:      12# Cloner le projet
+
+      🏠 Chambres:     80
+
+      📆 Réservations: 25git clone <url-du-repo>## 📁 Structure des Fichiers
+
+      ⏳ En attente:   3
+
+cd oussama
+
+⭐ Menu Principal - Que souhaitez-vous faire?
+
+  ❯ 👥  Gestion des Clients       → CRUD completLe projet crée automatiquement `.env.local` à partir de `.env.example`.
+
+    🛏️  Gestion des Chambres     → 80 chambres max
+
+    📅  Gestion des Réservations → Workflow complet# Installer les dépendances
+
+    📊  Dashboard & Statistiques → Vue d'ensemble
+
+    ──────────────────────────────────────────────────npm install```
+
+    🚪  Quitter
+
+```
+
+
+
+---# Copier le fichier de configurationhotel-booking/Pour activer l’authentification (Clerk) et la carte (Mapbox), remplace les valeurs dans `.env.local`.
+
+
+
+## 📚 Documentation APIcp .env.example .env
+
+
+
+### 🌐 Swagger UI│
+
+
+
+Accédez à la documentation interactive:# Modifier .env avec vos paramètres MySQL
+
+
+
+``````├── 📄 menu.js                    # Programme principal avec menu console## 🗄️ Base de données SQL (MySQL)
+
+http://localhost:3000/api-docs
+
+```
+
+
+
+### 📍 Endpoints Principaux---├── 📄 package.json               # Dependances du projet
+
+
+
+#### 👥 Clients `/api/v1/clients`
+
+
+
+| Méthode | Endpoint | Description |## ⚙️ Configuration├── 📄 README.md                  # Ce fichier- Dans `.env.local`, configure :
+
+|---------|----------|-------------|
+
+| `GET` | `/clients` | Liste tous les clients |
+
+| `POST` | `/clients` | Créer un client |
+
+| `GET` | `/clients/:id` | Obtenir un client |Modifiez le fichier `.env` :│    - `DATABASE_URL="mysql://user:password@localhost:3306/hotel_db"`
+
+| `PUT` | `/clients/:id` | Modifier un client |
+
+| `DELETE` | `/clients/:id` | Supprimer un client |
+
+| `GET` | `/clients/search/:nom` | Rechercher par nom |
+
+```env├── 📁 prisma/- Assure-toi que MySQL tourne et que la base existe.
+
+#### 🛏️ Chambres `/api/v1/chambres`
+
+# Configuration MySQL
+
+| Méthode | Endpoint | Description |
+
+|---------|----------|-------------|DB_HOST=localhost│   ├── schema.prisma             # Schema de la base de donnees MySQL- Initialisation :
+
+| `GET` | `/chambres` | Liste toutes les chambres |
+
+| `POST` | `/chambres` | Créer une chambre |DB_PORT=3306
+
+| `GET` | `/chambres/:id` | Obtenir une chambre |
+
+| `DELETE` | `/chambres/:id` | Supprimer une chambre |DB_USER=root│   └── seed.js                   # Donnees initiales (clients, chambres)    ```bash
+
+| `GET` | `/chambres/available/:debut/:fin` | Chambres disponibles |
+
+DB_PASSWORD=
+
+#### 📅 Réservations `/api/v1/reservations`
+
+DB_NAME=hotel_reservation│    npx prisma generate
+
+| Méthode | Endpoint | Description |
+
+|---------|----------|-------------|
+
+| `GET` | `/reservations` | Liste les réservations |
+
+| `POST` | `/reservations` | Créer une réservation |# Configuration Serveur├── 📁 src/    npx prisma db push
+
+| `GET` | `/reservations/:id` | Détails réservation |
+
+| `PUT` | `/reservations/:id/validate` | Valider |PORT=3000
+
+| `PUT` | `/reservations/:id/cancel` | Annuler |
+
+| `PUT` | `/reservations/:id/close` | Clôturer |NODE_ENV=development│   ├── 📁 lib/    node prisma/seed.js
+
+| `POST` | `/reservations/:id/chambres/:chambreId` | Ajouter chambre |
+
+| `DELETE` | `/reservations/:id/chambres/:chambreId` | Retirer chambre |```
+
+| `GET` | `/reservations/dashboard/stats` | Statistiques |
+
+│   │   ├── 📁 classes/           # CLASSES METIER    ```
+
+---
+
+### Créer la base de données MySQL
+
+## 📊 Modèles de Données
+
+│   │   │   ├── Client.js         # Classe Client- Les scripts 1-clic tenteront aussi `db push` + `seed` ; en cas d’échec (MySQL down ou credentials), un avertissement est affiché mais le serveur démarre (données mock toujours possibles).
+
+### Client
+
+```javascript```sql
+
+{
+
+  id: INTEGER (PK, Auto),CREATE DATABASE IF NOT EXISTS hotel_reservation;│   │   │   ├── Chambre.js        # Classe Chambre
+
+  nom: STRING(100) NOT NULL,
+
+  prenom: STRING(100) NOT NULL,```
+
+  adresse: STRING(255)
+
+}│   │   │   ├── Reservation.js    # Classe Reservation## 📁 Structure (minimum de fichiers)
+
+```
+
+---
+
+### Chambre
+
+```javascript│   │   │   ├── GestionReservations.js  # Gestion tableau reservations
+
+{
+
+  id: INTEGER (PK, Auto),## ▶️ Démarrage
+
+  numero_chambre: STRING(10) UNIQUE NOT NULL,
+
+  telephone: STRING(20)│   │   │   └── index.js          # Export des classes```
+
+}
+
+```### Serveur API
+
+
+
+### Reservation│   │   │src/
+
+```javascript
+
+{```bash
+
+  id: INTEGER (PK, Auto),
+
+  code: STRING(20) UNIQUE,  // Auto-généré: RES-XXXXXX# Développement (avec hot reload)│   │   ├── hotelService.js       # Service de connexion MySQL/Prisma├── composants.jsx         (UI : boutons, cards, calendrier, toast…)
+
+  clientId: INTEGER (FK → Client),
+
+  dateDebut: DATE NOT NULL,npm run dev
+
+  dateFin: DATE NOT NULL,
+
+  etat: ENUM('Pending', 'Validated', 'Canceled', 'Closed')│   │   └── donnees.js            # Donnees mock pour l'interface web├── lib/donnees.js         (données mock + utilitaires)
+
+}
+
+```# Production
+
+
+
+---npm start│   │├── lib/hotelService.js    (logique Métier + Prisma MySQL)
+
+
+
+## 🔄 Workflow des Réservations```
+
+
+
+```│   └── 📁 app/                   # Pages Next.js (interface web)└── app/
+
+  ┌─────────────┐
+
+  │   CRÉATION  │Le serveur démarre sur `http://localhost:3000`
+
+  │   (Code     │
+
+  │   généré)   ││       ├── page.jsx              # Page d'accueil    ├── layout.jsx         (mise en page)
+
+  └──────┬──────┘
+
+         │### Menu Console (CLI)
+
+         ▼
+
+  ┌─────────────┐     ┌─────────────┐│       ├── layout.jsx            # Layout principal    ├── providers.jsx      (providers client : Toast)
+
+  │   PENDING   │────▶│  CANCELED   │
+
+  │  (En attente)│     │  (Annulée)  │```bash
+
+  └──────┬──────┘     └─────────────┘
+
+         │npm run cli│       ├── 📁 recherche/         # Page de recherche    ├── page.jsx           (accueil)
+
+         ▼
+
+  ┌─────────────┐```
+
+  │  VALIDATED  │
+
+  │  (Validée)  ││       └── 📁 reservations/      # Page des reservations    ├── recherche/         (recherche + actions serveur)
+
+  └──────┬──────┘
+
+         │### Scripts de Base de Données
+
+         ▼
+
+  ┌─────────────┐│    └── reservations/      (mes réservations + actions Prisma)
+
+  │   CLOSED    │
+
+  │  (Clôturée) │```bash
+
+  └─────────────┘
+
+```# Synchroniser les tables├── 📁 scripts/```
+
+
+
+### ⚙️ Règles Métiernpm run db:sync
+
+
+
+1. **Création** → État automatique: `Pending`│   └── demarrer.js               # Script de demarrage automatique
+
+2. **Code** → Généré automatiquement: `RES-XXXXXX`
+
+3. **Validation** → Possible uniquement depuis `Pending`# Peupler avec des données de test
+
+4. **Annulation** → Possible depuis `Pending` ou `Validated`
+
+5. **Clôture** → Possible uniquement depuis `Validated`npm run db:seed│## 🧪 Commandes utiles
+
+6. **Auto-clôture** → Tâche cron pour réservations expirées
+
+
+
+---
 
 # Réinitialiser (ATTENTION: supprime tout!)├── 📄 Demarrer.bat               # Lancement Windows (1 clic)
 
+## ☕ Version Java
+
 npm run db:reset
+
+Une implémentation Java POO est également disponible dans le dossier `java/`:
 
 ```├── 📄 Demarrer.ps1               # Script PowerShell Windows```bash
 
+```bash
+
+cd java
+
+# Ouvrir dans NetBeans ou IntelliJ IDEA
+
+```### Tâches Automatiques└── 📄 Demarrer.command           # Lancement macOS (1 clic)npm run dev
 
 
-### Tâches Automatiques└── 📄 Demarrer.command           # Lancement macOS (1 clic)npm run dev
+
+Structure:
+
+- `Personne.java` - Classe abstraite
+
+- `Client.java` - Hérite de Personne```bash```npm run build
+
+- `Chambre.java` - Gestion des chambres
+
+- `Reservation.java` - Gestion des réservationsnpm run cron
+
+- `GestionReservations.java` - Logique métier
+
+- `HotelDAO.java` - Accès données (JDBC)```npm start
+
+- `Main.java` - Point d'entrée
 
 
 
-```bash```npm run build
-
-npm run cron
-
-```npm start
-
-
+---
 
 ------npm run lint
 
+## 🤝 Contribution
 
+
+
+Les contributions sont les bienvenues! N'hésitez pas à:
 
 ## 📚 API Documentation```
 
+1. 🍴 Fork le projet
+
+2. 🔧 Créer une branche (`git checkout -b feature/AmazingFeature`)
+
+3. 💾 Commit (`git commit -m 'Add AmazingFeature'`)
+
+4. 📤 Push (`git push origin feature/AmazingFeature`)La documentation Swagger est disponible à :## 📊 Diagramme des Classes
+
+5. 📫 Ouvrir une Pull Request
 
 
-La documentation Swagger est disponible à :## 📊 Diagramme des Classes
 
-
+---
 
 ``````
 
+<div align="center">
+
 http://localhost:3000/api/docs┌─────────────────────────────────────────────────────────────────────────────┐
+
+## 👨‍💻 Auteur
 
 ```│                           DIAGRAMME DE CLASSES                              │
 
+**Oussama SAJJI**
+
 └─────────────────────────────────────────────────────────────────────────────┘
 
-### Endpoints Principaux
+[![GitHub](https://img.shields.io/badge/GitHub-oussama--sajji-181717?style=for-the-badge&logo=github)](https://github.com/oussama-sajji)
 
-┌─────────────────────────┐
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/oussama-sajji)### Endpoints Principaux
 
-| Méthode | Endpoint | Description |│        CLIENT           │
 
-|---------|----------|-------------|├─────────────────────────┤
 
-| **CLIENTS** | | |│ - id: number            │
+*EMSI - École Marocaine des Sciences de l'Ingénieur*┌─────────────────────────┐
 
-| GET | `/api/clients` | Liste tous les clients |│ - nom: string           │
+
+
+---| Méthode | Endpoint | Description |│        CLIENT           │
+
+
+
+### ⭐ Star ce projet si vous l'avez trouvé utile!|---------|----------|-------------|├─────────────────────────┤
+
+
+
+Made with ❤️ in Morocco 🇲🇦| **CLIENTS** | | |│ - id: number            │
+
+
+
+</div>| GET | `/api/clients` | Liste tous les clients |│ - nom: string           │
+
 
 | POST | `/api/clients` | Créer un client |│ - prenom: string        │
 
