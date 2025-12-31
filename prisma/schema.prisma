@@ -1,0 +1,45 @@
+// Prisma schema (SQLite) — création rapide d'une base SQL locale
+// Documentation: https://www.prisma.io/docs
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Hotel {
+  id       String  @id @default(cuid())
+  nom      String
+  ville    String
+  image    String?
+  prixBase Int
+
+  reservations Reservation[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Reservation {
+  id           String   @id @default(cuid())
+  userId       String
+
+  hotelId      String
+  hotel        Hotel    @relation(fields: [hotelId], references: [id])
+
+  chambreNom   String
+  voyageurs    Int
+  dateArrivee  DateTime
+  dateDepart   DateTime
+  prixTotal    Int
+  statut       String   @default("confirmed")
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([userId])
+  @@index([hotelId])
+}

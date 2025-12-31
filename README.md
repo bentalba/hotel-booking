@@ -67,7 +67,25 @@ Le projet crée automatiquement `.env.local` à partir de `.env.example`.
 
 Pour activer l’authentification (Clerk) et la carte (Mapbox), remplace les valeurs dans `.env.local`.
 
-## 📁 Structure (minimum de fichiers)
+## �️ Base de données SQL (rapide)
+
+Le projet peut fonctionner en **mode démo** (données mock), mais tu peux aussi créer une **base SQL locale** rapidement.
+
+### Option simple (recommandée) : SQLite
+
+- Dans `.env.local`, mets :
+    - `DATABASE_URL=file:./dev.db`
+- Ensuite, au démarrage “1 clic”, la base est initialisée automatiquement (Prisma : generate + db push + seed).
+
+Commandes manuelles si besoin :
+
+```bash
+npx prisma generate
+npx prisma db push
+node prisma/seed.js
+```
+
+## �📁 Structure (minimum de fichiers)
 
 ```
 src/
