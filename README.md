@@ -1,4 +1,41 @@
-<div align="center"># 🏨 Système de Gestion Hôtelière - EMSI# 🏨 Systeme de Gestion Hotel# 🏨 Atlas — Réservation d’hôtels (Maroc)
+# 🏨 Hotel Booking Workspace
+
+Primary focus: **Java console application** for hotel reservation management (NetBeans/Maven friendly) with optional MySQL persistence. A legacy Next.js scaffold remains in `src/` for reference; the Java module is the supported deliverable.
+
+## Project Structure
+
+- `java/` – Java console app (menu-based) with in-memory demo data (80 rooms) and optional MySQL DAO.
+  - `pom.xml` – Maven config (JDK 17, MySQL driver runtime, exec plugin for `hotel.Main`).
+  - `run-windows.bat` – One-command launcher on Windows.
+  - `sql/hotel.sql` – Schema for optional MySQL tests.
+  - `README.md` – Full Java usage notes.
+- `src/, prisma/, scripts/` – Legacy Next.js/Prisma scaffold (not required to run the Java app).
+- `.github/` – Copilot instructions.
+
+## Quick Start (Java app)
+
+### Windows (1 command)
+```powershell
+cd java
+.\run-windows.bat
+```
+
+### macOS / Linux
+```bash
+cd java
+mvn -DskipTests exec:java
+```
+
+> If Maven is missing, install it or use your IDE’s Maven runner. JDK 17 required.
+
+## Optional: MySQL Persistence
+- Configure credentials in `java/src/hotel/HotelDAO.java`.
+- Create schema: `mysql -u <user> -p < sql/hotel/sql`.
+- Use the console menu option “Connexion MySQL (Test)” to validate connectivity.
+
+## Notes
+- The working tree is clean on `main`; Java remains the supported path for compilation and grading.
+- Legacy Next.js assets are left untouched but are not part of the required runtime.<div align="center"># 🏨 Système de Gestion Hôtelière - EMSI# 🏨 Systeme de Gestion Hotel# 🏨 Atlas — Réservation d’hôtels (Maroc)
 
 
 
