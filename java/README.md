@@ -91,34 +91,37 @@ java/
 
 ## 🚀 Installation
 
-### 1. Prérequis
-- JDK 8 ou supérieur
-- NetBeans IDE
-- MySQL Server (XAMPP/WAMP ou MySQL Workbench)
-- MySQL Connector/J (mysql-connector-java-8.x.jar)
+### 1. Prérequis (NetBeans)
+- JDK 17 recommandé (configuré dans le `pom.xml`)
+- NetBeans 12+ (support Maven)
+- **Optionnel** : MySQL Server si vous voulez tester la persistance JDBC (menu "Connexion MySQL")
 
-### 2. Créer la base de données
-```bash
-mysql -u root -p < java/sql/hotel.sql
-```
+### 1bis. Exécution ultra-rapide (Windows, 1 commande)
+- Ouvrir PowerShell ou l'invite de commandes dans le dossier `java/`
+- Exécuter :
+    ```powershell
+    .\run-windows.bat
+    ```
+    (compile et lance automatiquement `hotel.Main` via Maven)
 
-Ou via phpMyAdmin : importer `java/sql/hotel.sql`
+### 2. Ouverture dans NetBeans (Maven prêt)
+1. Fichier → Ouvrir un projet → Sélectionner le dossier `java/` (détecté comme projet Maven grâce au `pom.xml`).
+2. Exécuter : Run Project (F6) — lance le menu console avec données de démo (80 chambres).
 
-### 3. Configurer la connexion
-Modifier dans `HotelDAO.java` :
+### 3. Persistance MySQL (optionnel)
+Si vous souhaitez activer la BDD MySQL pour tester les méthodes DAO :
 ```java
+// Dans HotelDAO.java
 private static final String URL = "jdbc:mysql://localhost:3306/hotel";
 private static final String USER = "root";
-private static final String PASSWORD = ""; // Votre mot de passe
+private static final String PASSWORD = ""; // votre mot de passe
+```
+Puis créer les tables :
+```bash
+mysql -u root -p < sql/hotel.sql
 ```
 
-### 4. Ajouter MySQL Connector dans NetBeans
-1. Right-click sur "Libraries"
-2. Add JAR/Folder
-3. Sélectionner `mysql-connector-java-8.x.jar`
-
-### 5. Exécuter
-Run → Run Project ou F6
+> Le connecteur MySQL est déjà référencé dans `pom.xml` (scope runtime). NetBeans téléchargera la dépendance automatiquement.
 
 ## 📝 Fonctionnalités (selon le PDF)
 
